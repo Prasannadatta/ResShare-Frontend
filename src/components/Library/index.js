@@ -25,6 +25,10 @@ const Library = () => {
     }
   };
 
+  const handleDelete = (cid) => {
+    setFiles(files.filter(file => file.CID != cid))
+  }
+
   useEffect(() => {
     getAllFiles();
   }, []);
@@ -45,7 +49,7 @@ const Library = () => {
           :
           files && files.length > 0 ?
             files.map((file) => 
-              <OutlinedCard fileInfo={file}/>
+              <OutlinedCard fileInfo={file} onDelete={handleDelete}/>
             )
           :
           <NoFilesFound />
