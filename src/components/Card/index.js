@@ -44,7 +44,7 @@ const OutlinedCard = (props) => {
       // console.log(process.env, 'ppppppppppppppppp')
       // const downloadPath = `${process.env.HOME}/Downloads`;
       // const defaultDownloadDir = 
-      const response = await axios.post('http://localhost:5000/download', {cid: `${props.fileInfo.CID}`, filename: `${props.fileInfo.fileName}`});    
+      const response = await axios.post('http://localhost:5000/download', {cid: `${props.fileInfo.CID}`, filename: `${props.fileInfo.fileName}`});
       setMessage("File Downloaded Successfully");  
       setOpen(true);
     } catch (err) {
@@ -55,9 +55,12 @@ const OutlinedCard = (props) => {
   const deleteFile = async () => {
     try {
       const response = await axios.post('http://localhost:5000/delete', {cid: `${props.fileInfo.CID}`});
-      setMessage("File Deleted Successfully");  
+      const delete_status = response.data.status;
+      setMessage(delete_status);  
       setOpen(true);
-      props.onDelete(props.fileInfo.CID);      
+      if (delete_status == "File deleted successfully") {
+        props.onDelete(props.fileInfo.CID);
+      }      
     } catch (err) {
       console.error("Failed to delete file:", err);
     }
