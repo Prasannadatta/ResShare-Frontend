@@ -15,6 +15,7 @@ import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import { Divider, Typography } from '@mui/material';
 import UploadPage from '../UploadPage';
+import Dashboard from '../Dashboard';
 // import axios from 'axios';
 // import useDemoRouter from './../DefaultRouter';
 
@@ -87,6 +88,11 @@ const DashboardLayoutBasic = (props) => {
     else if (pathname === '/library') {
       return (
         <Library/>
+      );
+    }
+    else if (pathname === '/dashboard') {
+      return (
+        <Dashboard/>
       );
     }
     else {
