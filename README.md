@@ -1,5 +1,3 @@
-`Change the name from ResShare-Frontend to app (if you run without changing the name, it might give you an error)`
-
 # ResShare
 ## A ResilientDB App
 
